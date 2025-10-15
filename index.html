@@ -6,22 +6,22 @@
     <title>İp Mücadelesi - İki Kişilik</title>
     <style>
         /* CSS stilleri aynı kalır */
-        body {
-            background-color: #1c1c1c;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-        }
-        #gameCanvas {
-            border: 5px solid #3b82f6;
-            background-color: #0d0d0d;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
+      #gameCanvas {
+        border: 5px solid #3b82f6;
+        background-color: #0d0d0d;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        /* YENİ: Mobil görünümü düzeltmek için esnekliği ve maksimum boyutu ekle */
+        max-width: 95vw; /* Ekran genişliğinin %95'i kadar maksimum genişlik */
+        max-height: 90vh; /* Ekran yüksekliğinin %90'ı kadar maksimum yükseklik */
+        width: auto; /* Genişliği otomatik ayarla */
+        height: auto; /* Yüksekliği otomatik ayarla */
+    }
+    
+    body {
+        /* ... (diğer body stilleri) ... */
+        /* Ekranın kaymasını tamamen engellemek için */
+        overflow: hidden; 
+    }
         .controls-info {
             margin-top: 20px;
             font-size: 14px;
@@ -33,13 +33,13 @@
         .player-1 { color: blue; font-weight: bold; }
         .player-2 { color: red; font-weight: bold; }
         /* YENİ: MOBİL KONTROL STİLLERİ */
-        #mobileControls {
+       #mobileControls {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 150px; /* Joysticklerin yüksekliği */
-            pointer-events: none; /* Varsayılan olarak tıklama olaylarını altındaki elementlere geçir */
+            height: 120px; /* 150px'den 120px'e düşürüldü */
+            pointer-events: none;
             z-index: 100;
             display: flex;
             justify-content: space-between;
@@ -48,12 +48,13 @@
 
         .joystick-container {
             position: relative;
-            width: 150px; /* Joystick alanının genişliği */
-            height: 150px;
-            /* background-color: rgba(255, 255, 255, 0.1); /* Hata ayıklama için görünür yapabilirsiniz */
+            width: 120px; /* Joystick alanının genişliği 150px'den 120px'e düşürüldü */
+            height: 120px; /* Joystick alanının yüksekliği 150px'den 120px'e düşürüldü */
             border-radius: 50%;
-            pointer-events: auto; /* Tıklama olaylarını yakala */
+            pointer-events: auto;
             opacity: 0.8;
+            /* YENİ: Ekranın alt kenarından biraz yukarı taşıma */
+            margin-bottom: 5px; 
         }
 
         .joystick-stick {
